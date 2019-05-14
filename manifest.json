@@ -1,0 +1,24 @@
+{
+    "manifest_version": 2,
+ 
+    "name": "marks",
+    "description": "example",
+    "version": "1.0",
+ 
+    "browser_action": {
+        "default_popup": "index.html"
+    },
+
+    "permissions": [
+        "activeTab",
+        "cookies"
+    ],
+    
+    "content_scripts": [
+        {
+          "matches": ["https://www.ebay.com/itm/*"],
+          "js": ["index.js"],
+          "run_at": "document_end"
+        }
+    ]
+}
