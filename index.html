@@ -1,18 +1,23 @@
 <!doctype html>
 <html>
-
 <head>
     <meta charset="utf-8">
-    <title>marks</title>
-    <script src="popup.js"></script>
+    <title>Marks</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans+Caption:700|PT+Sans:400,700" rel="stylesheet">
 </head>
 
 <body>
-    <h1>Auth</h1>
-    <input type="text" class="login" id="Login" placeholder="Login">
-    <input type="password" class="password" id="Password" placeholder="Password">
-    <button class="in">Войти</button>
-    <button class="out" style="display: none;">Выйти</button>
+    <div class="auth-form">
+        <h2 class="auth-caption">Авторизация</h2>
+        <input type="login" class="textfield login" placeholder="Имя пользователя" />
+        <input type="password" class="textfield password" placeholder="Пароль" />
+        <div class="buttons">
+            <button class="button in">Войти</button>
+            <button class="button out" style="display: none;">Выйти</button>
+        </div>
+    </div>
+    <script src="popup.js"></script>
 </body>
 
 </html>

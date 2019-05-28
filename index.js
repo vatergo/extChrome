@@ -1,33 +1,22 @@
 let itemTitle = document.getElementById('itemTitle');
 let button = document.createElement("button");
+function getCookie(name) {
+    var matches = document.cookie.match(new RegExp(
+        "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+    ));
+    return matches ? decodeURIComponent(matches[1]) : undefined;
+}
+
 button.textContent = '+';
 button.addEventListener('click', function () {
-    alert('click');
     let value;
     try {
         value = window.location.href.split('/')[5].split('?')[0];
     } catch (e) {
 
     }
-    let headers = new Headers();
-    headers.append('content-type', 'application/json');
-    headers.append('Cookie', `userName=${getCookie()}`);
-    alert(value);
-    fetch(`https://localhost:5001/api/things/${value}`, {
-        method: 'GET',
-        headers,
-    })
-        .then(function (response) { if (response.status !== 201) throw new Error(response.status); alert('Продукт добавлен'); })
+    fetch(`http://localhost:8080/api/things/${value}`, { method: 'GET', headers: { 'set-cookie': `userId=${getCookie('userId')}; expires=0` } })
+        .then(function (response) { if(response.ok) alert('Продукт добавлен'); else alert('Продукт уже добавлен')})
         .catch(function (error) { alert('Что-то пошло не так ' + error.message) });
 });
 itemTitle.appendChild(button);
-
-function getCookie() {
-    let matches = document.cookie.match(new RegExp(
-        "(?:^|; )" + 'userName'.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
-    ));
-    if (matches) {
-        return decodeURIComponent(matches[1]);
-    }
-    return undefined;
-}
