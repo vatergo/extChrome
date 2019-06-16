@@ -15,7 +15,7 @@ button.addEventListener('click', function () {
     } catch (e) {
 
     }
-    fetch(`http://localhost:8080/api/things/${value}`, { method: 'GET', headers: { 'set-cookie': `userId=${getCookie('userId')}; expires=0` } })
+    fetch(`https://marks-server.herokuapp.com/api/things/${value}`, { method: 'GET', headers: { 'set-cookie': `userId=${getCookie('userId')}; expires=0` } })
         .then(function (response) { if(response.ok) alert('Продукт добавлен'); else alert('Продукт уже добавлен')})
         .catch(function (error) { alert('Что-то пошло не так ' + error.message) });
 });

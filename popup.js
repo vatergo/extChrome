@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     buttonIn.addEventListener('click', function () {
         chrome.tabs.getSelected(null, function (tab) {
-            fetch('http://localhost:8080/api/users/auth', {
+            fetch('https://marks-server.herokuapp.com/api/users/auth', {
                 method: 'POST',
                 body: JSON.stringify({
                     login: login.value,
